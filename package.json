@@ -1,0 +1,35 @@
+{
+  "type": "module",
+  "scripts": {
+    "prebuild": "yarn clean",
+    "build:browser-client": "vite build --mode optimized",
+    "build:node-client": "vite build --mode optimized --outDir ../build/node-client --ssr NodeClient.tsx",
+    "build:node-server": "vite build -c vite-node.config.ts --mode optimized",
+    "build": "yarn build:browser-client && yarn build:node-client && yarn build:node-server",
+    "clean": "rm -rf build",
+    "predeploy": "yarn build",
+    "deploy": "flyctl deploy --ha=false --remote-only",
+    "dev": "vite-node -c vite-node.config.ts -w ./src/NodeServer.tsx",
+    "start": "NODE_ENV=production node --conditions=react-server build/node-server/NodeServer.js --env=production"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.11.1",
+    "hono": "^4.3.9",
+    "markdown-to-jsx": "^7.4.7",
+    "react": "^19.0.0-rc-6d3110b4d9-20240531",
+    "react-distributed-components": "^0.2.0",
+    "react-dom": "^19.0.0-rc-6d3110b4d9-20240531",
+    "react-router-dom": "^6.23.1",
+    "react-server-dom-webpack": "^19.0.0-rc-6d3110b4d9-20240531"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12",
+    "@types/react": "npm:types-react@beta",
+    "@types/react-dom": "npm:types-react-dom@beta",
+    "@vitejs/plugin-react": "^4.3.0",
+    "babel-plugin-react-compiler": "^0.0.0-experimental-487cb0e-20240529",
+    "typescript": "^5.4.5",
+    "vite": "^5.2.11",
+    "vite-node": "^1.6.0"
+  }
+}
