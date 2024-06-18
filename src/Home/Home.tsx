@@ -29,5 +29,13 @@ export const Home: FC<Home.Props> = () => (
       devouring gourmet kibble. I've got the swagger, the style, and the
       attitude to match. Watch out, world, because this feline is here to stay.
     </P>
+    <div style={{ marginBlock: 56 }}>
+      <b>What is this?</b>
+      <P>
+        This is an experiment using React server components and actions with
+        Vite. You can view the source code on{" "}
+        <a href="https://github.com/daniel-nagy/rcs-vite-experiment">GitHub</a>.
+      </P>
+    </div>
   </>
 );
